@@ -1,0 +1,11 @@
+elixir:
+  build: .
+  volumes:
+    - .:/elixir
+  entrypoint: ["elixir"]
+
+iex:
+  build: .
+  volumes:
+    - .:/elixir
+  entrypoint: ["iex"]
