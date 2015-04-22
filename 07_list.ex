@@ -22,4 +22,17 @@ defmodule MyList do
 
   def span(from,to) when from == to, do: [to]
   def span(from,to),                 do: [from | span(from + 1, to)]
+
+  def primes(to), do: (for x <- span(2, to), is_prime?(x), do: x)
+
+  def is_prime?(n) do
+    divisors = Enum.filter(2..n-1, &(rem(n, &1) == 0))
+    length(divisors) == 0
+  end
+
+  def orders_with_shipment(tax_rates, orders) do
+    for o <- orders, 
+      Enum.member?([:NC, :TX], o[:ship_to]),
+      do: o ++ [total_amount: o[:net_amount] + (o[:net_amount] * tax_rates[o[:ship_to]])]
+  end
 end
