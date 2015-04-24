@@ -41,7 +41,7 @@ defmodule MyString do
     else
       str_len = String.length(str)
       r_pad = div(size - str_len, 2)
-      l_pad = size - str_len - r_pad
+      l_pad = size - str_len - r_par
       str |> String.rjust(str_len + r_pad) |> String.ljust(str_len + r_pad + l_pad)
     end
   end
